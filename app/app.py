@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -9,13 +9,15 @@ def hello():
 @app.route("/", methods=['GET','POST'])
 def home():
     if request.method == 'POST':
-        value_one = int(request.form['number-one'])
-        value_two = int(request.form['number-two'])
+        value_one = int(request.form.get('first'))
+        value_two = int(request.form.get('second'))
         total = value_one + value_two
+        data = {"total": str(total)}
+        return jsonify(data)
         # passing in an argument called 'String'
         # this is part of jinja templating
-        return render_template('index.html', value=total)
-    return render_template('index.html' )
+        # return render_template('index.html', value=total)
+    return render_template('index.html')
         
 
 

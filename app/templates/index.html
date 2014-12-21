@@ -19,7 +19,7 @@
       <!-- <h1>Hello, {{string}}</h1> -->
       <h1>Adder</h1>
       <br>
-        <form role="form" method="post">
+        <form role="form" method="post" onsubmit="return false">
             <div class="form-group">
                 <input type="text" class="form-control" name="number-one" placeholder="Enter a location" required>
                 <input type="text" class="form-control" name="number-two" placeholder="Enter a location" required>
@@ -28,9 +28,11 @@
             <!-- <button type="submit" class="btn btn-primary">Find a developer!</button>
             <button type="submit" class="btn btn-success" id="try-again">Try a different location</button> -->
         </form>
-      <p>The calculated value is {{value}}</p>
+        <br>
+      <p>The calculated value is <span id="results"></span></p>
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src={{ url_for('static', filename="main.js") }}></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   </body>
 </html>
