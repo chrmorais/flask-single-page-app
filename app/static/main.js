@@ -4,8 +4,8 @@ $(document).ready(function(){
   $("form").on("submit", function(){
     console.log("The form has been submitted");
 
-    var valueOne = $('input[name="number-one"]').val()
-    var valueTwo = $('input[name="number-two"]').val()
+    var valueOne = $('input[name="location"]').val()
+    var valueTwo = $('input[name="language"]').val()
     console.log(valueOne,valueTwo);
 
     $.ajax({
@@ -13,8 +13,9 @@ $(document).ready(function(){
       url: "/",
       data: {first: valueOne, second: valueTwo},
       success: function(results){
-        console.log(results);
-        $("#results").html(results.total)
+        // targeting the results id
+        console.log(results.items[0]);
+        $("#results").html('<a href="'+results.items[0].html_url+'">'+results.items[0].login+'</a><br><img src="'+results.items[0].avatar_url+'"+class="avatar">')
         $("input").val("")
       },
       error: function(error){
